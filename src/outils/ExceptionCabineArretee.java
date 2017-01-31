@@ -1,6 +1,6 @@
 package outils;
 
-public class ExceptionCabineArretee 
+public class ExceptionCabineArretee extends Exception
 {
 	
 }
