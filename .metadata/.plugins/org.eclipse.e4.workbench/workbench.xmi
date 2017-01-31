@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_4Ipdwee1EeaM2fuwdGhZ4Q" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_4IqE0Oe1EeaM2fuwdGhZ4Q" bindingContexts="_4IqE0ue1EeaM2fuwdGhZ4Q">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList/>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DemandeTest.java&quot; tooltip=&quot;U:\Home\f15016974\TPNote-GLQ\src\test\DemandeTest.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/U:/Home/f15016974/TPNote-GLQ/src/test/DemandeTest.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;IListeTrieeCirculaire.java&quot; tooltip=&quot;U:\Home\f15016974\TPNote-GLQ\src\commande\IListeTrieeCirculaire.java&quot;>&#xD;&#xA;&lt;persistable uri=&quot;file:/U:/Home/f15016974/TPNote-GLQ/src/commande/IListeTrieeCirculaire.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_4IqE0Oe1EeaM2fuwdGhZ4Q" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_4u6zkue1EeaM2fuwdGhZ4Q" label="%trimmedwindow.label.eclipseSDK" x="150" y="150" width="1024" height="768">
@@ -11,6 +11,7 @@
     <persistedState key="aggregateWorkingSetId" value="Aggregate for window 1485867909198"/>
     <persistedState key="show_in_time" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;show_in_time/>"/>
     <tags>topLevel</tags>
+    <tags>shellMaximized</tags>
     <children xsi:type="basic:PartSashContainer" xmi:id="_4u6zkue1EeaM2fuwdGhZ4Q" selectedElement="_4u7aoOe1EeaM2fuwdGhZ4Q" horizontal="true">
       <children xsi:type="advanced:PerspectiveStack" xmi:id="_4u7aoOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.ide.perspectivestack" containerData="7500" selectedElement="_5Djm0Oe1EeaM2fuwdGhZ4Q">
         <children xsi:type="advanced:Perspective" xmi:id="_5Djm0Oe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.jdt.ui.JavaPerspective" selectedElement="_5Djm0ee1EeaM2fuwdGhZ4Q" label="Java" iconURI="platform:/plugin/org.eclipse.jdt.ui/$nl$/icons/full/eview16/jperspective.png">
@@ -100,8 +101,8 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_5Djm3Oe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.egit.ui.RepositoriesView" toBeRendered="false" ref="_5DgjgOe1EeaM2fuwdGhZ4Q"/>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm3ee1EeaM2fuwdGhZ4Q" containerData="7500">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm3ue1EeaM2fuwdGhZ4Q" containerData="7500" horizontal="true">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm3ee1EeaM2fuwdGhZ4Q" containerData="7500" selectedElement="_5Djm3ue1EeaM2fuwdGhZ4Q">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm3ue1EeaM2fuwdGhZ4Q" containerData="7500" selectedElement="_5Djm3-e1EeaM2fuwdGhZ4Q" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_5Djm3-e1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_5DA0QOe1EeaM2fuwdGhZ4Q"/>
                 <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm4Oe1EeaM2fuwdGhZ4Q" containerData="2500">
                   <children xsi:type="basic:PartSashContainer" xmi:id="_5Djm4ee1EeaM2fuwdGhZ4Q" containerData="6000">
@@ -159,10 +160,22 @@
       <tags>View</tags>
       <tags>categoryTag:Help</tags>
     </sharedElements>
-    <sharedElements xsi:type="advanced:Area" xmi:id="_5DA0QOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.editorss">
-      <children xsi:type="basic:PartStack" xmi:id="_5DBbUOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.e4.primaryDataStack">
+    <sharedElements xsi:type="advanced:Area" xmi:id="_5DA0QOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.editorss" selectedElement="_5DBbUOe1EeaM2fuwdGhZ4Q">
+      <children xsi:type="basic:PartStack" xmi:id="_5DBbUOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_L60gYOe5Eea7bY6zUabNuw">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <children xsi:type="basic:Part" xmi:id="_L60gYOe5Eea7bY6zUabNuw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="IListeTrieeCirculaire.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;IListeTrieeCirculaire.java&quot; partName=&quot;IListeTrieeCirculaire.java&quot; title=&quot;IListeTrieeCirculaire.java&quot; tooltip=&quot;U:\Home\f15016974\TPNote-GLQ\src\commande\IListeTrieeCirculaire.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/U:/Home/f15016974/TPNote-GLQ/src/commande/IListeTrieeCirculaire.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;5&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_OTXFEOe5Eea7bY6zUabNuw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="DemandeTest.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;DemandeTest.java&quot; partName=&quot;DemandeTest.java&quot; title=&quot;DemandeTest.java&quot; tooltip=&quot;U:\Home\f15016974\TPNote-GLQ\src\test\DemandeTest.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.ide.FileStoreEditorInputFactory&quot; uri=&quot;file:/U:/Home/f15016974/TPNote-GLQ/src/test/DemandeTest.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;5&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+          <tags>removeOnHide</tags>
+        </children>
       </children>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_5DQr4Oe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.jdt.ui.PackageExplorer" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Package Explorer" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/eview16/package.png" tooltip="" closeable="true">
@@ -278,11 +291,14 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4wv_kOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_lYpF8Oe2Eea3ceEX_-Piqw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_4Jhnlue1EeaM2fuwdGhZ4Q"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_dfMWEOe5Eea_ObG_EOruxg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_4Jhnlue1EeaM2fuwdGhZ4Q"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4wwmoOe1EeaM2fuwdGhZ4Q" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_4wwmoee1EeaM2fuwdGhZ4Q" elementId="additions" toBeRendered="false"/>
+      </children>
+      <children xsi:type="menu:ToolBar" xmi:id="_MJXSsOe5Eea7bY6zUabNuw" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
+        <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_5E31cOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.debug.ui.launchActionSet">
         <tags>Draggable</tags>
@@ -299,7 +315,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4wxNsOe1EeaM2fuwdGhZ4Q" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_lYvzoOe2Eea3ceEX_-Piqw" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_4JekTue1EeaM2fuwdGhZ4Q"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_dfScsOe5Eea_ObG_EOruxg" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_4JekTue1EeaM2fuwdGhZ4Q"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_4wxNsee1EeaM2fuwdGhZ4Q" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
