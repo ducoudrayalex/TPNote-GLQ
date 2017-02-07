@@ -2,7 +2,7 @@ package outils;
 /**
  * Classe matérialisant la demande d'un étage à l'ascenseur dans une direction donnée
  * @author Léo Marion et Alexandre
- * @version 1.0
+ * @version 1.1
  */
 public class Demande 
 {
@@ -33,7 +33,7 @@ public class Demande
 	public Demande() 
 	{
 		this.numero_etage = 0;
-		this.sens = sens.INDEFINI;
+		this.sens = Sens.INDEFINI;
 	}
 	
 	/**
@@ -110,14 +110,19 @@ public class Demande
 	}
 
 	/**
-	 * Décrit l'objet demande
+	 * Décrit l'objet demande par son numéro d'étage suivi du sens de navigation
 	 */
 	@Override
 	public String toString() {
 		return numero_etage + sens.toString();
 	}	
 	
+	
 	@Override
+	/**
+	 * Fonction equals redéfinie pour comparer les objets Demande
+	 * @return <code>true</code> si le sens de la demande et le numéro d'étage sont égales aux propriétés de l'objet en paramètre, sinon <code>false</code>
+	 */
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

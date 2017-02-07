@@ -43,7 +43,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#ListeTrieeCirculaireDeDemandes()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#ListeTrieeCirculaireDeDemandes()}.
 	 */
 	@Test
 	public void testListeTrieeCirculaireDeDemandesDeDeplacement() {
@@ -52,7 +52,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#vider()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#vider()}.
 	 */
 	@Test
 	public void testVider() {
@@ -62,7 +62,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#estVide()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#estVide()}.
 	 * @throws ExceptionDemandeInvalide 
 	 */
 	@Test
@@ -74,7 +74,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#taille()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#taille()}.
 	 */
 	@Test
 	public void testTaille() {
@@ -84,7 +84,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#inserer(outils.Demande)}.
 	 * Cas normaux.
 	 */
 	@Test
@@ -115,7 +115,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -124,7 +124,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -133,7 +133,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -142,7 +142,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -151,7 +151,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -160,7 +160,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -169,7 +169,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -178,7 +178,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -187,7 +187,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -196,7 +196,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas normaux.
 	 */
 	@Test
@@ -212,7 +212,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -221,7 +221,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -230,7 +230,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -239,7 +239,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -248,7 +248,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#suivantDe(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#suivantDe(outils.Demande)}.
 	 */
 	@Test
 	public void testSuivantDe() {
