@@ -17,12 +17,12 @@ public class Demande
 	
 	public Demande() 
 	{}
-	
+	//Getter
 	public int etage()
 	{
 		return this.numero_etage;
 	}
-	
+	//Setter
 	public Sens sens()
 	{
 		return this.sens;
