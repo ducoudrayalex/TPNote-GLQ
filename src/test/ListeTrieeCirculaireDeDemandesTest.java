@@ -26,7 +26,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	
 	@Before
 	public void setUp() {
-		suite1 = new ListeTrieeCirculaireDeDemandes( 10);
+		suite1 = new ListeTrieeCirculaireDeDemandes(10);
 		suite2 = new ListeTrieeCirculaireDeDemandes( 10);
 		suite1.inserer( new Demande(8, Sens.MONTEE));
 		suite1.inserer( new Demande(2, Sens.MONTEE));
@@ -43,7 +43,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#ListeTrieeCirculaireDeDemandes()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#ListeTrieeCirculaireDeDemandes()}.
 	 */
 	@Test
 	public void testListeTrieeCirculaireDeDemandesDeDeplacement() {
@@ -52,7 +52,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#vider()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#vider()}.
 	 */
 	@Test
 	public void testVider() {
@@ -62,7 +62,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#estVide()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#estVide()}.
 	 * @throws ExceptionDemandeInvalide 
 	 */
 	@Test
@@ -74,7 +74,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#taille()}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#taille()}.
 	 */
 	@Test
 	public void testTaille() {
@@ -84,7 +84,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#inserer(outils.Demande)}.
 	 * Cas normaux.
 	 */
 	@Test
@@ -115,7 +115,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -124,7 +124,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -133,7 +133,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -142,7 +142,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -151,7 +151,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -160,7 +160,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -169,7 +169,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -178,7 +178,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -187,7 +187,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemande#inserer(outils.Demande)}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -196,7 +196,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas normaux.
 	 */
 	@Test
@@ -212,7 +212,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 	
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -221,7 +221,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -230,7 +230,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -239,7 +239,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
+	 * Méthode de test {@link commande.ListeTrieeCirculaireDeDemandes#supprimer(outils.Demande)}.
 	 * Cas Exceptionnel.
 	 */
 	@Test(expected=IllegalArgumentException.class)
@@ -248,7 +248,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	}
 
 	/**
-	 * Methode de test de {@link commande.ListeTrieeCirculaireDeDemandes#suivantDe(outils.Demande)}.
+	 * Méthode de test de {@link commande.ListeTrieeCirculaireDeDemandes#suivantDe(outils.Demande)}.
 	 */
 	@Test
 	public void testSuivantDe() {
@@ -256,51 +256,34 @@ public class ListeTrieeCirculaireDeDemandesTest {
 		
 		suite2.inserer( new Demande( 3, Sens.MONTEE));
 		assertEquals( suite2.toString(), "[3^]");
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
+		
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
 
 		suite2.inserer( new Demande( 0, Sens.MONTEE));
 		assertEquals( suite2.toString(), "[0^,3^]");
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
 
 		suite2.supprimer( new Demande( 3, Sens.MONTEE));
 		suite2.supprimer( new Demande( 0, Sens.MONTEE));
 		suite2.inserer( new Demande( 2, Sens.DESCENTE));
 		suite2.inserer( new Demande( 4, Sens.DESCENTE));
 		assertEquals( suite2.toString(), "[4v,2v]");
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande( 5, Sens.MONTEE)));
-		assertEquals( new Demande( 2, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande(3, Sens.DESCENTE)));
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande( 1, Sens.DESCENTE)));
-		
-		assertEquals( suite1.toString(), "[2^,8^,8v,4v]");
-		assertEquals( new Demande(2,Sens.MONTEE), 
-				suite1.suivantDe(new Demande(0,Sens.MONTEE)));
-		assertEquals( new Demande(2,Sens.MONTEE),
-				suite1.suivantDe(new Demande(2,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE),
-				suite1.suivantDe(new Demande(3,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE), 
-				suite1.suivantDe(new Demande(7,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE),
-				suite1.suivantDe(new Demande(8,Sens.MONTEE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande( 5, Sens.MONTEE)));
+		assertEquals( new Demande( 2, Sens.DESCENTE), suite2.suivantDe(new Demande(3, Sens.DESCENTE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande( 1, Sens.DESCENTE)));
+				assertEquals( suite1.toString(), "[2^,8^,8v,4v]");
+		assertEquals( new Demande(2,Sens.MONTEE), suite1.suivantDe(new Demande(0,Sens.MONTEE)));
+		assertEquals( new Demande(2,Sens.MONTEE), suite1.suivantDe(new Demande(2,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(3,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(7,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(8,Sens.MONTEE)));
 		assertEquals( new Demande(4,Sens.DESCENTE),
 				suite1.suivantDe(new Demande(7,Sens.DESCENTE)));
 		assertEquals( new Demande(4,Sens.DESCENTE), 

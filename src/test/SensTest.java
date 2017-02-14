@@ -18,7 +18,7 @@ import outils.Sens;
  */
 public class SensTest {
 	/**
-	 * Methode de test de  {@link ascenseur.outils.Sens}.
+	 * Méthode de test de  {@link ascenseur.outils.Sens}.
 	 */
 	@Test
 	public void test() {
