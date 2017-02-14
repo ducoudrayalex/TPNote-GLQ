@@ -2,6 +2,7 @@ package commande;
 
 import outils.Demande;
 import outils.Sens;
+import static org.junit.Assert.*;
 
 public class Controleur {
 	private int nombreEtages;
@@ -11,6 +12,14 @@ public class Controleur {
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
 	
+	public Controleur(int pNombreEtages,int pPosition,Sens pSens,Sens pSensPrecedent,Demande pDemande,ListeTrieeCirculaireDeDemandes pListeDemande){
+		nombreEtages=pNombreEtages;
+		position=pPosition;
+		sens=pSens;
+		sensPrecedent=pSensPrecedent;
+		demande=pDemande;
+		stockDeDemandes=pListeDemande;
+	}
 	public void MAJPostion(){
 		if(sens==Sens.MONTEE){
 			position++;
