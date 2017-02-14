@@ -151,6 +151,10 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 			else throw new IllegalArgumentException();
 			triTabFinal();
 		}
+		else if(!contient(d) || estVide())
+		{
+			throw new IllegalArgumentException();
+		}
 	}
 
 	@Override
