@@ -26,7 +26,7 @@ public class ListeTrieeCirculaireDeDemandesTest {
 	
 	@Before
 	public void setUp() {
-		suite1 = new ListeTrieeCirculaireDeDemandes( 10);
+		suite1 = new ListeTrieeCirculaireDeDemandes(10);
 		suite2 = new ListeTrieeCirculaireDeDemandes( 10);
 		suite1.inserer( new Demande(8, Sens.MONTEE));
 		suite1.inserer( new Demande(2, Sens.MONTEE));
@@ -256,51 +256,34 @@ public class ListeTrieeCirculaireDeDemandesTest {
 		
 		suite2.inserer( new Demande( 3, Sens.MONTEE));
 		assertEquals( suite2.toString(), "[3^]");
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
+		
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
 
 		suite2.inserer( new Demande( 0, Sens.MONTEE));
 		assertEquals( suite2.toString(), "[0^,3^]");
-		assertEquals( new Demande( 3, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
-		assertEquals( new Demande( 0, Sens.MONTEE), 
-				suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
+		assertEquals( new Demande( 3, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.MONTEE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande(1, Sens.DESCENTE)));
+		assertEquals( new Demande( 0, Sens.MONTEE), suite2.suivantDe(new Demande( 4, Sens.DESCENTE)));
 
 		suite2.supprimer( new Demande( 3, Sens.MONTEE));
 		suite2.supprimer( new Demande( 0, Sens.MONTEE));
 		suite2.inserer( new Demande( 2, Sens.DESCENTE));
 		suite2.inserer( new Demande( 4, Sens.DESCENTE));
 		assertEquals( suite2.toString(), "[4v,2v]");
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande(1, Sens.MONTEE)));
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande( 5, Sens.MONTEE)));
-		assertEquals( new Demande( 2, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande(3, Sens.DESCENTE)));
-		assertEquals( new Demande( 4, Sens.DESCENTE), 
-				suite2.suivantDe(new Demande( 1, Sens.DESCENTE)));
-		
-		assertEquals( suite1.toString(), "[2^,8^,8v,4v]");
-		assertEquals( new Demande(2,Sens.MONTEE), 
-				suite1.suivantDe(new Demande(0,Sens.MONTEE)));
-		assertEquals( new Demande(2,Sens.MONTEE),
-				suite1.suivantDe(new Demande(2,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE),
-				suite1.suivantDe(new Demande(3,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE), 
-				suite1.suivantDe(new Demande(7,Sens.MONTEE)));
-		assertEquals( new Demande(8,Sens.MONTEE),
-				suite1.suivantDe(new Demande(8,Sens.MONTEE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande(1, Sens.MONTEE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande( 5, Sens.MONTEE)));
+		assertEquals( new Demande( 2, Sens.DESCENTE), suite2.suivantDe(new Demande(3, Sens.DESCENTE)));
+		assertEquals( new Demande( 4, Sens.DESCENTE), suite2.suivantDe(new Demande( 1, Sens.DESCENTE)));
+				assertEquals( suite1.toString(), "[2^,8^,8v,4v]");
+		assertEquals( new Demande(2,Sens.MONTEE), suite1.suivantDe(new Demande(0,Sens.MONTEE)));
+		assertEquals( new Demande(2,Sens.MONTEE), suite1.suivantDe(new Demande(2,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(3,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(7,Sens.MONTEE)));
+		assertEquals( new Demande(8,Sens.MONTEE), suite1.suivantDe(new Demande(8,Sens.MONTEE)));
 		assertEquals( new Demande(4,Sens.DESCENTE),
 				suite1.suivantDe(new Demande(7,Sens.DESCENTE)));
 		assertEquals( new Demande(4,Sens.DESCENTE), 

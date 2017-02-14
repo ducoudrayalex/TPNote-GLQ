@@ -63,3 +63,5 @@ $RECYCLE.BIN/
 *.lnk
 /bin/
 /.apt_generated/
+*.zip
+.metadata/.mylyn/.tasks.xml.zip

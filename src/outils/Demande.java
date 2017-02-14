@@ -36,6 +36,7 @@ public class Demande
 		this.sens = Sens.INDEFINI;
 	}
 	
+	
 	/**
 	 * Récupère l'étage demandé
 	 * @return numéro d'étage
@@ -44,6 +45,7 @@ public class Demande
 	{
 		return this.numero_etage;
 	}
+
 	
 	/**
 	 * Récupère le sens de navigation de la demande
