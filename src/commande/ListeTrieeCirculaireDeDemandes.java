@@ -6,18 +6,19 @@ import outils.Sens;
 
 public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Demande> 
 {
-
+	private int taille_liste = 0;
 	public boolean[] montee;
 	public boolean[] descente;
 	public Demande[] listeTrieeFinale; // tableau final de demandes triées
 	
 	public ListeTrieeCirculaireDeDemandes(int taille_liste) 
 	{
-		this.montee = new boolean[taille_liste/2];
+		this.montee = new boolean[taille_liste];
 		for(int i=0;i<montee.length;i++) montee[i]=false; 
-		this.descente = new boolean[taille_liste/2];
+		this.descente = new boolean[taille_liste];
 		for(int i=0;i<descente.length;i++) descente[i]=false; 
-		this.listeTrieeFinale=new Demande[taille_liste];
+		this.listeTrieeFinale=new Demande[taille_liste*2];
+		this.taille_liste = taille_liste;
 	}
 	
 	
@@ -25,13 +26,21 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	@Override
 	public int taille() 
 	{
-		return listeTrieeFinale.length;
+		int vrai_taille =0;
+		for(int i=0;i<listeTrieeFinale.length;i++)
+		{
+			if(listeTrieeFinale[i]!= null)
+			{
+				vrai_taille++;
+			}
+		}
+		return vrai_taille;
 	}
 
 	@Override
 	public boolean estVide() 
 	{
-		return (listeTrieeFinale == null);
+		return (listeTrieeFinale[0] == null);
 	}
 
 	public boolean estPleine() 
@@ -75,30 +84,40 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 		{
 			if(d.sens() == Sens.MONTEE)
 			{
-				for(int i=0;i<montee.length;i++)
+				if(d.etage() >= taille_liste-1 || d.etage() <0)
 				{
-					if(d.etage() == i)
+					throw new IllegalArgumentException();
+				}
+				else
+				{
+					for(int i=0;i<montee.length;i++)
 					{
-						montee[i]=true;
+						if(d.etage() == i)
+						{
+							montee[i]=true;
+						}
 					}
 				}
 			}
 			
-			else
+			else if(d.sens() == Sens.DESCENTE)
 			{
-				if(d.sens() == Sens.INDEFINI)
+				if(d.etage()<=0 || d.etage()>taille_liste-1)
 				{
 					throw new IllegalArgumentException();
 				}
-				
-				for(int i=0;i<descente.length;i++)
+				else
 				{
-					if(d.etage() == i)
+					for(int i=0;i<descente.length;i++)
 					{
-						descente[i]=true;
+						if(d.etage() == i)
+						{
+							descente[i]=true;
+						}	
 					}	
-				}	
+				}
 			}
+			else throw new IllegalArgumentException();
 			triTabFinal();
 		}
 	}
@@ -119,13 +138,8 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 				}
 			}
 			
-			else
+			else if(d.sens() == Sens.DESCENTE)
 			{
-				if(d.sens() == Sens.INDEFINI)
-				{
-					throw new IllegalArgumentException();
-				}
-				
 				for(int i=0;i<descente.length;i++)
 				{
 					if(d.etage() == i)
@@ -134,6 +148,7 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 					}	
 				}	
 			}
+			else throw new IllegalArgumentException();
 			triTabFinal();
 		}
 	}
@@ -141,35 +156,82 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	@Override
 	public Demande suivantDe(Demande courant) 
 	{
-		int flag = 0;
-		for(int i=0;i<listeTrieeFinale.length;i++)
+		int bonneDemande = 0;
+		boolean flag= false;
+		for(int i=0;i<taille();i++)
 		{
-			if(listeTrieeFinale[i].equals(courant))
+			if(flag == false)
 			{
-				flag = i+1;
-			}
+				if(courant.sens() == Sens.MONTEE)
+				{
+					if(listeTrieeFinale[i].etage() > courant.etage())
+					{
+						bonneDemande= i;
+						flag= true;
+					}
+				}
+				else if(courant.sens() == Sens.DESCENTE)
+				{
+					if(listeTrieeFinale[i].etage() < courant.etage())
+					{
+						bonneDemande= i;
+						flag= true;
+					}
+				}
+				
+			}	
 		}
-		return listeTrieeFinale[flag];
+		return listeTrieeFinale[bonneDemande];
 	}
 	
+	public String toString()
+	{
+		String phraseFinale = "";
+		if(estVide())
+		{
+			phraseFinale = "[]";
+		}
+		else
+		{
+			phraseFinale = "[" + listeTrieeFinale[0];
+			for(int i=1;i<taille();i++)
+			{
+				if(listeTrieeFinale[i]!=null)
+				{
+					phraseFinale += "," + listeTrieeFinale[i].toString();
+				}
+				else
+				{
+					phraseFinale += "";
+				}
+			}
+			phraseFinale += "]";
+		}
+		
+		return phraseFinale;
+	}
 	
 	private void triTabFinal()
 	{
 		vider();
-		for(int i=0;i<listeTrieeFinale.length;i++)
+		int i = 0;
+		for(int j=0;j<montee.length;j++) 
 		{
-			for(int j=0;j<montee.length;j++) 
+			if(montee[j] == true)
 			{
-				if(montee[j]) listeTrieeFinale[i]= new Demande(j,Sens.MONTEE);
-			}
-			
-			for(int k=descente.length;k>0;k--)
-			{
-				if(descente[k]) listeTrieeFinale[i]= new Demande(k,Sens.MONTEE);
+				listeTrieeFinale[i]= new Demande(j,Sens.MONTEE);
+				i++;
 			}
 		}
+			
+		for(int k=descente.length-1;k>=0;k--)
+		{
+			if(descente[k] == true)
+			{
+				listeTrieeFinale[i]= new Demande(k,Sens.DESCENTE);
+				i++;
+			}
+		}	
 	}
-	
-	
 	
 }
