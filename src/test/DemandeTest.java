@@ -36,7 +36,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#Demande()}.
+	 * Méthode de test de {@link outils.Demande#Demande()}.
 	 */
 	@Test
 	public void testDemande1() {
@@ -45,7 +45,7 @@ public class DemandeTest {
 	}
 	
 	/**
-	 * Methode de test de {@link outils.Demande#Demande(int, outils.Sens)}.
+	 * Méthode de test de {@link outils.Demande#Demande(int, outils.Sens)}.
 	 */
 	@Test
 	public void testDemandeIntSens1() {
@@ -58,7 +58,7 @@ public class DemandeTest {
 	}
 	
 	/**
-	 * Methode de test de {@link outils.Demande#etage()}.
+	 * Méthode de test de {@link outils.Demande#etage()}.
 	 */
 	@Test
 	public void testEtage() {
@@ -66,7 +66,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#passeEtageSuivant()}.
+	 * Méthode de test de {@link outils.Demande#passeEtageSuivant()}.
 	 * Cas normaux.
 	 */
 	@Test
@@ -78,7 +78,7 @@ public class DemandeTest {
 	}
 	
 	/**
-	 * Methode de test de {@link outils.Demande#passeEtageSuivant()}.
+	 * Méthode de test de {@link outils.Demande#passeEtageSuivant()}.
 	 * Cas exceptionnel.
 	 */
 	@Test(expected=ExceptionCabineArretee.class)
@@ -87,9 +87,9 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode obsolete de test de la mehode obsolete {@link outils.Demande#sens()}.
+	 * Méthode obsolete de test de la méthode obsolete {@link outils.Demande#sens()}.
 	 * 
-	 * @deprecated remplacee par {@link #testEnMontee()}, {@link #testEnDEscente()} et
+	 * @deprecated remplacée par {@link #testEnMontee()}, {@link #testEnDEscente()} et
 	 * {@link #testEstIndefini()}
 	 */
 	@Test @Deprecated
@@ -100,7 +100,7 @@ public class DemandeTest {
 	}
 	
 	/**
-	 * Methode de test de {@link outils.Demande#enMontee()}.
+	 * Méthode de test de {@link outils.Demande#enMontee()}.
 	 */
 	@Test
 	public void testEnMontee() {
@@ -110,7 +110,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#enDescente()}.
+	 * Méthode de test de {@link outils.Demande#enDescente()}.
 	 */
 	@Test
 	public void testEnDescente() {
@@ -120,7 +120,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#estIndefini()}.
+	 * Méthode de test de {@link outils.Demande#estIndefini()}.
 	 */
 	@Test
 	public void testEstIndefini() {
@@ -130,7 +130,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#changeSens(outils.Sens)}.
+	 * Méthode de test de {@link outils.Demande#changeSens(outils.Sens)}.
 	 */
 	@Test
 	public void testChangeSens() {
@@ -142,7 +142,7 @@ public class DemandeTest {
 		assertTrue( d3.estIndefini());
 	}
 	/**
-	 * Methode de test de {@link outils.Demande#toString()}.
+	 * Méthode de test de {@link outils.Demande#toString()}.
 	 */
 	@Test
 	public void testToString() {
@@ -152,7 +152,7 @@ public class DemandeTest {
 	}
 
 	/**
-	 * Methode de test de {@link outils.Demande#equals(java.lang.Object)}.
+	 * Méthode de test de {@link outils.Demande#equals(java.lang.Object)}.
 	 */
 	@Test
 	public void testEqualsObject() {
