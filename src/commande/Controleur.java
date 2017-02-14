@@ -42,15 +42,45 @@ public class Controleur {
 		stockDeDemandes.inserer(d);
 	}
 	
-	public void eteindreTousBoutons(){
-		
-	}
+	
 	
 	public void viderStock(){
 		stockDeDemandes.vider();
 	}
 	
 	public Demande interrogerStock(){
+		
+	}
+	
+	public void enleverDuStock(Demande d){
+		stockDeDemandes.supprimer(d);
+	}
+	
+	public void allumerBouton(Demande d){
+		
+	}
+	
+	public void eteindreBouton(Demande d){
+	
+	}
+	
+	public void eteindreTousBoutons(){
+	
+	}
+	
+	public void arreterProchainNiveau(){
+		
+	}
+	
+	public void arreter(){
+		
+	}
+	
+	public void ajoutreMessage(String s){
+		
+	}
+	
+	public void changerPosition(int i){
 		
 	}
 }
