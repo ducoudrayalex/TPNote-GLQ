@@ -124,7 +124,9 @@ public class Demande
 	 * @return <code>true</code> si le sens de la demande et le numéro d'étage sont égales aux propriétés de l'objet en paramètre, sinon <code>false</code>
 	 */
     public boolean equals(Object obj) {
-        if (obj == null) {
+		if(this==obj){
+			return true;
+		}else if (obj == null) {
             return false;
         }
         else if (getClass() != obj.getClass()) {
@@ -138,4 +140,10 @@ public class Demande
         	return false;
         }  
     }
+	
+	@Override
+	public int hashCode() {
+		  assert false : "hashCode not designed";
+		  return 42; // any arbitrary constant will do 
+	}
 }
