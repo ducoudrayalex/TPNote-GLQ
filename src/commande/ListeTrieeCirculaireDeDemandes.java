@@ -1,6 +1,5 @@
 package commande;
 
-import java.util.ArrayList;
 
 import outils.Demande;
 import outils.Sens;
@@ -8,14 +7,17 @@ import outils.Sens;
 public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Demande> 
 {
 
-	public ArrayList listeTrieeCirculaire;
-
+	public boolean[] montee;
+	public boolean[] descente;
+	public Demande[] listeTrieeFinale; // tableau final de demandes triées
 	
 	public ListeTrieeCirculaireDeDemandes(int taille_liste) 
 	{
-		this.listeTrieeCirculaire = new Demande[taille_liste];
-		this.montee = new Demande[taille_liste];
-		this.descente = new Demande[taille_liste];
+		this.montee = new boolean[taille_liste/2];
+		for(int i=0;i<montee.length;i++) montee[i]=false; 
+		this.descente = new boolean[taille_liste/2];
+		for(int i=0;i<descente.length;i++) descente[i]=false; 
+		this.listeTrieeFinale=new Demande[taille_liste];
 	}
 	
 	
@@ -23,26 +25,26 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	@Override
 	public int taille() 
 	{
-		return listeTrieeCirculaire.length;
+		return listeTrieeFinale.length;
 	}
 
 	@Override
 	public boolean estVide() 
 	{
-		return (listeTrieeCirculaire[0] == null);
+		return (listeTrieeFinale == null);
 	}
 
 	public boolean estPleine() 
 	{
-		return (listeTrieeCirculaire[listeTrieeCirculaire.length-1] != null);
+		return (listeTrieeFinale[listeTrieeFinale.length-1] != null);
 	}
 	
 	@Override
 	public void vider() 
 	{
-		for(int i =0;i<listeTrieeCirculaire.length;i++)
+		for(int i =0;i<listeTrieeFinale.length;i++)
 		{
-			listeTrieeCirculaire[i] = null;
+			listeTrieeFinale[i] = null;
 		}
 	}
 
@@ -50,128 +52,124 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	public boolean contient(Demande d) 
 	{
 		int i = 0;
-		int j = 0;
 		/*
 		 * On crée une boucle qui s'arrête dès lors que l'on trouve une correspondance.
-		 * A défaut la boucle s'arrête à la fin du tableau.
+		 * A défaut la boucle renvoie faux.
 		 * */
-		while(i<listeTrieeCirculaire.length && j<1)
+		while(i<listeTrieeFinale.length)
 		{
-			if(listeTrieeCirculaire[i] == d)
+			if(listeTrieeFinale[i] == d)
 			{
-				j++;
+				return true;
 			}
 			i++;
 		}
-		return j>0;
+		return false;
 		
 	}
 
 	@Override
 	public void inserer(Demande d) throws IllegalArgumentException
 	{
-		if(!estPleine())
+		if(!estPleine() && !contient(d))
 		{
-			if(!contient(d))
+			if(d.sens() == Sens.MONTEE)
 			{
-				if(d.sens() == Sens.MONTEE)
+				for(int i=0;i<montee.length;i++)
 				{
-					if(estVide())
+					if(d.etage() == i)
 					{
-						montee[0]=d;
-					}
-					else
-					{
-						montee[montee.length-1]=d;
-						Demande tampon = null;
-						boolean permut;
-				 
-						do 
-						{
-							// hypothèse : le tableau est trié
-							permut = false;
-							for (int i = 0; i < montee.length-1; i++) 
-							{
-								// Teste si 2 éléments successifs sont dans le bon ordre ou non
-								if (montee[i].etage() > montee[i+1].etage()) 
-								{
-									// s'ils ne le sont pas, on échange leurs positions
-									tampon = montee[i];
-									montee[i] = montee[i + 1];
-									montee[i + 1] = tampon;
-									permut = true;
-								}
-							}
-						} while (permut);
-					}
-				}
-				
-				else if(d.sens() == Sens.DESCENTE)
-				{
-					if(estVide())
-					{
-						descente[0]=d;
-					}
-					else
-					{
-						descente[descente.length-1]=d;
-						Demande tampon = null;
-						boolean permut;
-				 
-						do 
-						{
-							// hypothèse : le tableau est trié
-							permut = false;
-							for (int i = 0; i < descente.length-1; i++) 
-							{
-								// Teste si 2 éléments successifs sont dans le bon ordre ou non
-								if (descente[i].etage() < descente[i+1].etage()) 
-								{
-									// s'ils ne le sont pas, on échange leurs positions
-									tampon = descente[i];
-									descente[i] = descente[i + 1];
-									descente[i + 1] = tampon;
-									permut = true;
-								}
-							}
-						} while (permut);
+						montee[i]=true;
 					}
 				}
 			}
+			
+			else
+			{
+				if(d.sens() == Sens.INDEFINI)
+				{
+					throw new IllegalArgumentException();
+				}
+				
+				for(int i=0;i<descente.length;i++)
+				{
+					if(d.etage() == i)
+					{
+						descente[i]=true;
+					}	
+				}	
+			}
+			triTabFinal();
 		}
 	}
 
 	@Override
-	public void supprimer(Demande d) 
+	public void supprimer(Demande d) throws IllegalArgumentException
 	{	
-		if(!estVide())
+		if(!estVide() && contient(d))
 		{
-			if(!contient(d))
+			if(d.sens() == Sens.MONTEE)
 			{
-				for(int i =0;i<listeTrieeCirculaire.length;i++)
+				for(int i=0;i<montee.length;i++)
 				{
-					if(listeTrieeCirculaire[i].etage() == d.etage())
+					if(d.etage() == i)
 					{
-						listeTrieeCirculaire[i]= null;
-						break;
+						montee[i]=false;
 					}
 				}
-				
-				int i=0;
-				while(listeTrieeCirculaire[i+1] == listeTrieeCirculaire[i])
-				{
-					listeTrieeCirculaire[i] = listeTrieeCirculaire[i+1];
-					i++;
-				}
 			}
+			
+			else
+			{
+				if(d.sens() == Sens.INDEFINI)
+				{
+					throw new IllegalArgumentException();
+				}
+				
+				for(int i=0;i<descente.length;i++)
+				{
+					if(d.etage() == i)
+					{
+						descente[i]=false;
+					}	
+				}	
+			}
+			triTabFinal();
 		}
-		
 	}
 
 	@Override
 	public Demande suivantDe(Demande courant) 
 	{
-		return null;
+		int flag = 0;
+		for(int i=0;i<listeTrieeFinale.length;i++)
+		{
+			if(listeTrieeFinale[i].equals(courant))
+			{
+				flag = i+1;
+			}
+		}
+		return listeTrieeFinale[flag];
 	}
-
+	
+	
+	private void triTabFinal()
+	{
+		vider();
+		for(int i=0;i<listeTrieeFinale.length;i++)
+		{
+			for(int j=0;j<montee.length;j++) 
+			{
+				if(montee[j]) listeTrieeFinale[i]= new Demande(j,Sens.MONTEE);
+			}
+			
+			for(int k=descente.length;k>0;k--)
+			{
+				if(descente[k]) listeTrieeFinale[i]= new Demande(k,Sens.MONTEE);
+			}
+		}
+	}
+	
+	
+	
 }
