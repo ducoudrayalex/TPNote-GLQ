@@ -3,69 +3,67 @@ package commande;
 
 import outils.Demande;
 import outils.Sens;
-
 /**
- * Classe représentant une liste des demandes d'étage qui sera triée
- * en fonction de l'étage et du sens de navigation
- * Cette classe implémente l'interface IListeTrieeCirculaire
- * @author Léo et Vincent
- * @version 1.0
+ * Classe implémentant l'interface <code>IListeTrieeCirculaire</code>, elle représente la liste des demandes de l'ascenseur et est capable de trier cette liste en fonction des sens de navigation et des étages demandés.
+ * @author Léo, Vincent
+ * @version 2.0
+ * @see Demande
+ * @see Sens
  */
 public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Demande> 
 {
-	/**
-	 * Tableau contenant les demandes de montée, <code>true</code> si il y a une demande, <code>false</code> sinon
-	 */
+	private int taille_liste = 0;
 	public boolean[] montee;
-	
-	/**
-	 * Tableau contenant les demandes de descente, <code>true</code> si il y a une demande, <code>false</code> sinon
-	 */
 	public boolean[] descente;
-	
-	/**
-	 * Tableau de l'ensemble des demandes triées par sens et étage
-	 */
 	public Demande[] listeTrieeFinale; // tableau final de demandes triées
 	
 	/**
-	 * Constructeur, Instancie les tableaux <code>montee</code> et <code>descente</code> de taille <code>taille_liste/2</code>
-	 * Chaque case du tableau sera initialisée à false;
-	 * @param taille_liste
+	 * Constructeur, créée 3 listes : une liste des demandes en montée, une liste des demandes en descente et une liste finale
+	 * @param taille_liste <code>int</code> : taille des listes de montée et de descente.
 	 */
 	public ListeTrieeCirculaireDeDemandes(int taille_liste) 
 	{
-		this.montee = new boolean[taille_liste/2];
+		this.montee = new boolean[taille_liste];
 		for(int i=0;i<montee.length;i++) montee[i]=false; 
-		this.descente = new boolean[taille_liste/2];
+		this.descente = new boolean[taille_liste];
 		for(int i=0;i<descente.length;i++) descente[i]=false; 
-		this.listeTrieeFinale=new Demande[taille_liste];
+		this.listeTrieeFinale=new Demande[taille_liste*2];
+		this.taille_liste = taille_liste;
 	}
+	
 	
 	
 	@Override
 	/**
-	 * Renvoie la taille de la liste finale
-	 * @return <code>int</code> listeTrieeFinal.length
+	 * Retourne le nombre de demande dans la liste triée
+	 * @return <code>int</code> la vrai taille
 	 */
 	public int taille() 
 	{
-		return listeTrieeFinale.length;
+		int vrai_taille =0;
+		for(int i=0;i<listeTrieeFinale.length;i++)
+		{
+			if(listeTrieeFinale[i]!= null)
+			{
+				vrai_taille++;
+			}
+		}
+		return vrai_taille;
 	}
-	
+
 	@Override
 	/**
-	 * Défini si la liste finale est vide <code>true</code> ou non <code>false</code>
-	 * @return <code>boolean</code> [listeTrieeFinale == null]
+	 * Retourne si la liste est vide ou non
+	 * @return <code>boolean</code> <code>true</code> si la liste est vide, <code>false</code> sinon.
 	 */
 	public boolean estVide() 
 	{
-		return (listeTrieeFinale == null);
+		return (listeTrieeFinale[0] == null);
 	}
 
 	/**
-	 * Défini si la liste finale est pleine
-	 * @return <code>boolean</code> [listeTrieeFinale[listeTrieeFinale.length-1] != null]
+	 * Retourne si la liste est pleine ou non
+	 * @return <code>boolean</code> <code>true</code> si la liste est pleine <code>false</code> sinon
 	 */
 	public boolean estPleine() 
 	{
@@ -74,7 +72,7 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	
 	@Override
 	/**
-	 * Vide la liste finale
+	 * Vide la liste de toutes ses demandes
 	 */
 	public void vider() 
 	{
@@ -84,36 +82,29 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 		}
 	}
 
-	/**
-	 * Défini si la liste finale contient la <code>Demande</code> passée en paramètre
-	 * @param Demande d , Demande a rechercher
-	 * @return <code>boolean</code> <code>true</code> si la demande est trouvée, <code>false</code> sinon
-	 */
 	@Override
+	/**
+	 * Retourne si la liste contient la demande spécifiée en paramètre
+	 * @param d <code>Demande</code> la demande à trouver dans la liste
+	 * @return <code>boolean</code> <code>true</code> si la liste contient la demande <code>false</code> sinon
+	 */
 	public boolean contient(Demande d) 
 	{
-		int i = 0;
-		/*
-		 * On crée une boucle qui s'arrête dès lors que l'on trouve une correspondance.
-		 * A défaut la boucle renvoie faux.
-		 * */
-		while(i<listeTrieeFinale.length)
+		for(int i=0; i<taille(); i++)
 		{
-			if(listeTrieeFinale[i] == d)
+			if(listeTrieeFinale[i].equals(d))
 			{
 				return true;
 			}
-			i++;
 		}
 		return false;
-		
 	}
 
 	@Override
 	/**
-	 * Insère la demande spécifiée en paramètre dans le tableau de montée si la demande est une montée, dans le tableau de descente sinon
-	 * @exception <code>IllegalArgumentException</code>, si le sens de la demande est <code>INDEFINI</code>
-	 * @param Demande d, demande a insérer
+	 * Insère la demande spécifiée en paramètre dans la liste
+	 * @param <code>Demande</code> demande à insérer
+	 * @throws <code>IllegalArgumentException</code>
 	 */
 	public void inserer(Demande d) throws IllegalArgumentException
 	{
@@ -121,113 +112,167 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 		{
 			if(d.sens() == Sens.MONTEE)
 			{
-				for(int i=0;i<montee.length;i++)
-				{
-					if(d.etage() == i)
-					{
-						montee[i]=true;
-					}
-				}
-			}	
-			else
-			{
-				if(d.sens() == Sens.INDEFINI)
+				if(d.etage() >= taille_liste-1 || d.etage() <0)
 				{
 					throw new IllegalArgumentException();
 				}
-				
-				for(int i=0;i<descente.length;i++)
+				else
 				{
-					if(d.etage() == i)
+					for(int i=0;i<montee.length;i++)
 					{
-						descente[i]=true;
-					}	
-				}	
+						if(d.etage() == i)
+						{
+							montee[i]=true;
+						}
+					}
+				}
 			}
+			
+			else if(d.sens() == Sens.DESCENTE)
+			{
+				if(d.etage()<=0 || d.etage()>taille_liste-1)
+				{
+					throw new IllegalArgumentException();
+				}
+				else
+				{
+					for(int i=0;i<descente.length;i++)
+					{
+						if(d.etage() == i)
+						{
+							descente[i]=true;
+						}	
+					}	
+				}
+			}
+			else throw new IllegalArgumentException();
 			triTabFinal();
 		}
 	}
 
 	@Override
 	/**
-	 * Supprime la demande spécifiée en paramètre puis trie la liste
-	 * @exception <code>IllegalArgumentException</code> si le sens de la demande est <code>INDEFINI</code>
-	 * @param Demande d, demande a supprimer
+	 * Supprime la demande spécifiée en paramètre
+	 * @param <code>Demande</code> la demande à supprimer
+	 * @throws <code>IllegalArgumentException</code> si la demande n'existe pas dans la liste ou si le sens de la demande est <code>INDEFINI</code>
 	 */
 	public void supprimer(Demande d) throws IllegalArgumentException
 	{	
-		if(!estVide() && contient(d))
+		if(contient(d))
 		{
 			if(d.sens() == Sens.MONTEE)
 			{
-				for(int i=0;i<montee.length;i++)
-				{
-					if(d.etage() == i)
-					{
-						montee[i]=false;
-					}
-				}
+				montee[d.etage()]=false;
 			}
-			else
+			
+			else if(d.sens() == Sens.DESCENTE)
 			{
-				if(d.sens() == Sens.INDEFINI)
-				{
-					throw new IllegalArgumentException();
-				}
-				
-				for(int i=0;i<descente.length;i++)
-				{
-					if(d.etage() == i)
-					{
-						descente[i]=false;
-					}	
-				}	
+				descente[d.etage()]=false;
 			}
-			triTabFinal();
+			else throw new IllegalArgumentException();
 		}
+<<<<<<< HEAD
 		else if(!contient(d) || estVide())
 		{
 			throw new IllegalArgumentException();
 		}
+=======
+		else throw new IllegalArgumentException();
+		triTabFinal();
+
+>>>>>>> refs/remotes/origin/alex
 	}
 
 	@Override
 	/**
-	 * Renvoie la demande suivante de la demande spécifiée en paramètre dans la liste finale
-	 * @param Demande courant, Demande pour laquelle on veut connaître la demande suivante
-	 * @return <code>Demande</code>
+	 * Renvoie la demande suivante de la demande spécifiée en paramètre
+	 * @return <code>Demande</code> la demande suivante
+	 * @param <code>Demande</code> la demande courante
 	 */
 	public Demande suivantDe(Demande courant) 
 	{
-		int flag = 0;
-		for(int i=0;i<listeTrieeFinale.length;i++)
+		int bonneDemande = 0;
+		boolean flag= false;
+		for(int i=0;i<taille();i++)
 		{
-			if(listeTrieeFinale[i].equals(courant))
+			if(flag == false)
 			{
-				flag = i+1;
-			}
+				if(courant.sens() == Sens.MONTEE)
+				{
+					if(listeTrieeFinale[i].etage() > courant.etage())
+					{
+						bonneDemande= i;
+						flag= true;
+					}
+				}
+				else if(courant.sens() == Sens.DESCENTE)
+				{
+					if(listeTrieeFinale[i].etage() < courant.etage())
+					{
+						bonneDemande= i;
+						flag= true;
+					}
+				}
+			}	
 		}
-		return listeTrieeFinale[flag];
+		return listeTrieeFinale[bonneDemande];
 	}
 	
 	/**
-	 * Fonction de trie de la liste finale en fonction des tableaux de montée et de descente
+	 * Renvoie une chaîne de caractère représentant le contenu de la liste des demandes
+	 * @return <code>String</code>
+	 */
+	public String toString()
+	{
+		String phraseFinale = "";
+		if(estVide())
+		{
+			phraseFinale = "[]";
+		}
+		else
+		{
+			phraseFinale = "[" + listeTrieeFinale[0];
+			for(int i=1;i<taille();i++)
+			{
+				if(listeTrieeFinale[i]!=null)
+				{
+					phraseFinale += "," + listeTrieeFinale[i].toString();
+				}
+				else
+				{
+					phraseFinale += "";
+				}
+			}
+			phraseFinale += "]";
+		}
+		
+		return phraseFinale;
+	}
+	
+	/**
+	 * Trie la liste des demande en fonction des etages et des sens des demandes
 	 */
 	private void triTabFinal()
 	{
 		vider();
-		for(int i=0;i<listeTrieeFinale.length;i++)
+		int i = 0;
+		for(int j=0;j<montee.length;j++) 
 		{
-			for(int j=0;j<montee.length;j++) 
+			if(montee[j] == true)
 			{
-				if(montee[j]) listeTrieeFinale[i]= new Demande(j,Sens.MONTEE);
-			}
-			
-			for(int k=descente.length;k>0;k--)
-			{
-				if(descente[k]) listeTrieeFinale[i]= new Demande(k,Sens.MONTEE);
+				listeTrieeFinale[i]= new Demande(j,Sens.MONTEE);
+				i++;
 			}
 		}
+			
+		for(int k=descente.length-1;k>=0;k--)
+		{
+			if(descente[k] == true)
+			{
+				listeTrieeFinale[i]= new Demande(k,Sens.DESCENTE);
+				i++;
+			}
+		}	
 	}
 	
 }
