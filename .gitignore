@@ -65,4 +65,3 @@ $RECYCLE.BIN/
 /.apt_generated/
 *.zip
 .metadata/.mylyn/.tasks.xml.zip
-src/commande/Controleur.java
