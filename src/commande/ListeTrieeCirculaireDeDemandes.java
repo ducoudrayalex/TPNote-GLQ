@@ -171,9 +171,16 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 			}
 			else throw new IllegalArgumentException();
 		}
+<<<<<<< HEAD
+		else if(!contient(d) || estVide())
+		{
+			throw new IllegalArgumentException();
+		}
+=======
 		else throw new IllegalArgumentException();
 		triTabFinal();
 
+>>>>>>> refs/remotes/origin/alex
 	}
 
 	@Override
