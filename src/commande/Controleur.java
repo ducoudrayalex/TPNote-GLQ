@@ -8,6 +8,8 @@ public class Controleur implements IControleur{
 	private Sens sensPrecedent;
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
+	private IIUG diug;
+	private ICabine dc;
 	
 	public Controleur(int position, int nombreEtages, Sens sens, Sens sensPrecedent, Demande demande,
 			ListeTrieeCirculaireDeDemandes stockDeDemandes) 
@@ -20,6 +22,23 @@ public class Controleur implements IControleur{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
+	public int getPosition(){
+		return position;
+	}
+	public Controleur(IIUG diug,ICabine dc,int position){
+		this.diug=diug;
+		this.dc=dc;
+		this.position=position;
+	}
+	
+	public IIUG doublureIUG(){
+		return diug;
+	}
+	
+	public ICabine doublureCabine(){
+		return dc;
+	}
+	
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
