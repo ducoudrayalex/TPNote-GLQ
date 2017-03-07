@@ -20,7 +20,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	
 	/**
 	 * Constructeur par défaut de la classe.
-	 * @param position <code>int</code> : postition à laquelle se trouve la cabine
+	 * @param position <code>int</code> : position à laquelle se trouve la cabine
 	 * @param nombreEtages <code>int</code> : Nombre total d'étages de l'immeuble
 	 * @param sens <code>Sens</code> : Sens dans lequel la cabine est en mouvement 
 	 * @param sensPrecedent <code>Sens</code> : Sens précédent que la cabine suivait
@@ -38,11 +38,10 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
-<<<<<<< HEAD
+
 	/**
 	 * Met à jour la position de la cabine en fonction de son mouvement.
 	 */
-=======
 	public int getPosition(){
 		return position;
 	}
@@ -60,7 +59,6 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		return dc;
 	}
 	
->>>>>>> refs/remotes/origin/master
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
@@ -244,7 +242,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * Signale que la cabine s'arrête au prochain étage (due à une demande)
 	 */
 	@Override
-	public void areterProchainNiveau() {
+	public void arreterProchainNiveau() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -4,31 +4,30 @@ public class DoublureDeCabine implements ICabine {
 
 	@Override
 	public void signalerChangementDEtage() {
-		// TODO Auto-generated method stub
+		System.out.println("Signal de franchissement d'étage");
 		
 	}
 
 	@Override
 	public void monter() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("monter");
 	}
 
 	@Override
 	public void descendre() {
-		// TODO Auto-generated method stub
+		System.out.println("descendre");
 		
 	}
 
 	@Override
-	public void areterProchainNiveau() {
-		// TODO Auto-generated method stub
+	public void arreterProchainNiveau() {
+		System.out.println("arrêter prochain étage");
 		
 	}
 
 	@Override
 	public void arreter() {
-		// TODO Auto-generated method stub
+		System.out.println("arreter");
 		
 	}
 

@@ -26,7 +26,7 @@ public interface ICabine {
 	/**
 	 * Signale que la cabine s'arrête au prochain étage (due à une demande)
 	 */
-	void areterProchainNiveau();
+	void arreterProchainNiveau();
 	
 	/**
 	 * Fait arrêter la cabine en mouvement.
