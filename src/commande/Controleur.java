@@ -15,6 +15,8 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	private Sens sensPrecedent;
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
+	private IIUG diug;
+	private ICabine dc;
 	
 	/**
 	 * Constructeur par défaut de la classe.
@@ -36,9 +38,29 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Met à jour la position de la cabine en fonction de son mouvement.
 	 */
+=======
+	public int getPosition(){
+		return position;
+	}
+	public Controleur(IIUG diug,ICabine dc,int position){
+		this.diug=diug;
+		this.dc=dc;
+		this.position=position;
+	}
+	
+	public IIUG doublureIUG(){
+		return diug;
+	}
+	
+	public ICabine doublureCabine(){
+		return dc;
+	}
+	
+>>>>>>> refs/remotes/origin/master
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
