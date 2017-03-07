@@ -38,11 +38,10 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
-<<<<<<< HEAD
+
 	/**
 	 * Met à jour la position de la cabine en fonction de son mouvement.
 	 */
-=======
 	public int getPosition(){
 		return position;
 	}
@@ -60,7 +59,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		return dc;
 	}
 	
->>>>>>> refs/remotes/origin/master
+
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
@@ -150,18 +149,23 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * @param d <code>Demande</code> : Demande en question 
 	 */
 	@Override
-	public void demander(Demande d) {
-		// TODO Auto-generated method stub
-		
+	public void demander(Demande d) 
+	{
+		DoublureDeIUG ddc = new DoublureDeIUG();
+		ddc.allumerBouton(d);
 	}
 
 	/**
 	 * Enclenche l'arrêt d'urgence sur demande.
 	 */
 	@Override
-	public void arretUrgence() {
-		// TODO Auto-generated method stub
-		
+	public void arretUrgence() 
+	{
+		stockDeDemandes.vider();
+		MAJSens();
+		eteindreTousBoutons();
+		DoublureDeCabine ddc = new DoublureDeCabine();
+		ddc.arreter();
 	}
 
 	/**
@@ -169,8 +173,8 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * @param d <code>Demande</code> : Demande qui a été ajoutée dans le stock des demandes. 
 	 */
 	@Override
-	public void allumerBouton(Demande d) {
-		// TODO Auto-generated method stub
+	public void allumerBouton(Demande d) 
+	{
 		
 	}
 
@@ -217,8 +221,8 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * Signale un changement d'étage. 
 	 */
 	@Override
-	public void signalerChangementDEtage() {
-		// TODO Auto-generated method stub
+	public void signalerChangementDEtage() 
+	{
 		
 	}
 
