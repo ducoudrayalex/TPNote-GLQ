@@ -29,36 +29,36 @@ public interface IListeTrieeCirculaire<E> {
 	void vider();
 	
 	/**
-	 * Teste si la liste circulaire triée contient un element.
-	 * @param e l'element pour lequel on teste la presence.
-	 * @return true si l'element e est contenu par la
+	 * Teste si la liste circulaire triée contient un élément.
+	 * @param e l'élément pour lequel on teste la presence.
+	 * @return true si l'élément e est contenu par la
 	 * liste, false sinon.
 	 */
 	boolean contient(E e);
 
 	/**
-	 * Insère un element dans la liste circulaire triée si l'element
+	 * Insère un élément dans la liste circulaire triée si l'élément
 	 * n'est pas déjà contenu par la liste.
-	 * @param e l'element a insérer
-	 * @throws IllegalArgumentException si l'element est dejà dans la liste 
+	 * @param e l'élément a insérer
+	 * @throws IllegalArgumentException si l'élément est déjà dans la liste 
 	 */
 	void inserer(E e);
 	
 	
 	/**
-	 * Supprime un element de la liste circulaire triée.
-	 * @param e l'element a supprimer
-	 * @throws IllegalArgumentException si l'element n'est pas 
+	 * Supprime un élément de la liste circulaire triée.
+	 * @param e l'élément a supprimer
+	 * @throws IllegalArgumentException si l'élément n'est pas 
 	 * dans la liste.
 	 */
 	void supprimer(E e);
 	
 	/**
-	 * Recherche l'element suivant dans la liste triée circulaire,
-	 * de l'element donne en paramètre. L'element donne en paramètre 
-	 * n'est pas nécessairement present dans la liste.
-	 * @param l'element courant (present ou non dans la liste)
-	 * @return l'element suivant de l'element courant dans la liste
+	 * Recherche l'élément suivant dans la liste triée circulaire,
+	 * de l'élément donne en paramètre. L'élément donne en paramètre 
+	 * n'est pas nécessairement présent dans la liste.
+	 * @param l'élément courant (présent ou non dans la liste)
+	 * @return l'élément suivant de l'élément courant dans la liste
 	 * ou null si la liste est vide.
 	 * 
 	 */

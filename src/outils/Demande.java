@@ -1,7 +1,7 @@
 package outils;
 /**
  * Classe matérialisant la demande d'un étage à l'ascenseur dans une direction donnée
- * @author Léo Marion et Alexandre
+ * @author Léo, Marion et Alexandre
  * @version 1.1
  */
 public class Demande 
@@ -13,6 +13,8 @@ public class Demande
 	
 	/**
 	 * Sens de navigation de l'ascenseur pour une demande
+	 * @return <code>Sens</code>
+	 * @see Sens
 	 */
 	private Sens sens;
 	
@@ -39,7 +41,7 @@ public class Demande
 	
 	/**
 	 * Récupère l'étage demandé
-	 * @return numéro d'étage
+	 * @return int numéro d'étage
 	 */
 	public int etage()
 	{
@@ -49,7 +51,7 @@ public class Demande
 	
 	/**
 	 * Récupère le sens de navigation de la demande
-	 * @return sens de navigation
+	 * @return <code>Sens</code> sens de navigation
 	 */
 	public Sens sens()
 	{
@@ -85,6 +87,7 @@ public class Demande
 	
 	/**
 	 * Incrémente ou décrémente le numéro de l'étage en fonction du sens de la demande
+	 * @throws ExceptionCabineArretee
 	 */
 	public void passeEtageSuivant() throws ExceptionCabineArretee
 	{
@@ -104,7 +107,7 @@ public class Demande
 	
 	/**
 	 * Modifie le sens de la demande en fonction du sens passé en paramètre
-	 * @param sens_param
+	 * @param Sens sens de la demande
 	 */
 	public void changeSens(Sens sens_param)
 	{
@@ -113,6 +116,7 @@ public class Demande
 
 	/**
 	 * Décrit l'objet demande par son numéro d'étage suivi du sens de navigation
+	 * @return String concaténation de l'étage + du sens
 	 */
 	@Override
 	public String toString() {
@@ -123,10 +127,13 @@ public class Demande
 	@Override
 	/**
 	 * Fonction equals redéfinie pour comparer les objets Demande
+	 * @param Object l'objet demande à tester
 	 * @return <code>true</code> si le sens de la demande et le numéro d'étage sont égales aux propriétés de l'objet en paramètre, sinon <code>false</code>
 	 */
     public boolean equals(Object obj) {
-        if (obj == null) {
+		if(this==obj){
+			return true;
+		}else if (obj == null) {
             return false;
         }
         else if (getClass() != obj.getClass()) {
@@ -140,4 +147,13 @@ public class Demande
         	return false;
         }  
     }
+	
+	@Override
+	/**
+	 * @return int Un numéro constant
+	 */
+	public int hashCode() {
+		  assert false : "hashCode not designed";
+		  return 42; // any arbitrary constant will do 
+	}
 }
