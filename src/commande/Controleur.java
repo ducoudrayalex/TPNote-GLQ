@@ -49,6 +49,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		this.diug=diug;
 		this.dc=dc;
 		this.position=position;
+		this.stockDeDemandes=new ListeTrieeCirculaireDeDemandes(10);
 	}
 	
 	public IIUG doublureIUG(){
@@ -149,8 +150,15 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void demander(Demande d) {
-		// TODO Auto-generated method stub
+		this.stocker(d);
+		this.diug.demander(d);
+		MAJSens();
+		if(this.getPosition() < d.etage()){
+			this.dc.monter();
+		}else
+			this.dc.descendre();
 		
+		this.diug.allumerBouton(d);
 	}
 
 	/**
@@ -158,7 +166,8 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void arretUrgence() {
-		// TODO Auto-generated method stub
+		this.eteindreTousBoutons();
+		this.diug.arretUrgence();
 		
 	}
 
@@ -168,7 +177,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void allumerBouton(Demande d) {
-		// TODO Auto-generated method stub
+		this.diug.allumerBouton(d);
 		
 	}
 
@@ -178,7 +187,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void eteindreBouton(Demande d) {
-		// TODO Auto-generated method stub
+		this.diug.eteindreBouton(d);
 		
 	}
 
@@ -213,11 +222,14 @@ public class Controleur implements IControleur, IIUG, ICabine{
 
 	/**
 	 * Signale un changement d'étage. 
+	 * @throws ExceptionCabineArretee 
 	 */
 	@Override
-	public void signalerChangementDEtage() {
-		// TODO Auto-generated method stub
+	public void signalerChangementDEtage() throws ExceptionCabineArretee {
 		
+		this.dc.signalerChangementDEtage();
+		this.MAJPosition();
+		System.out.println("Etage : " + this.getPosition());
 	}
 
 	/**
@@ -225,7 +237,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void monter() {
-		// TODO Auto-generated method stub
+		this.dc.monter();
 		
 	}
 
@@ -234,7 +246,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void descendre() {
-		// TODO Auto-generated method stub
+		this.dc.descendre();
 		
 	}
 
@@ -243,7 +255,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void arreterProchainNiveau() {
-		// TODO Auto-generated method stub
+		this.dc.arreterProchainNiveau();
 		
 	}
 
@@ -252,7 +264,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void arreter() {
-		// TODO Auto-generated method stub
+		this.dc.arreter();
 		
 	}
 	

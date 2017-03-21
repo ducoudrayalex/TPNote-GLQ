@@ -10,8 +10,9 @@ public interface ICabine {
 
 	/**
 	 * Signale un changement d'étage. 
+	 * @throws ExceptionCabineArretee 
 	 */
-	void signalerChangementDEtage();
+	void signalerChangementDEtage() throws ExceptionCabineArretee;
 	
 	/**
 	 * Déclenche l'action de monter pour la cabine.

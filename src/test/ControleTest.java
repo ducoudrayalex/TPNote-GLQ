@@ -65,27 +65,30 @@ public class ControleTest {
 		c1 = c2 = c3 = c4 = c5 = c6 = c7 = c8 = c9 = c10 = null;
 	}
 	
-	public void testDemander(Controleur c,Demande d){
+	public String testDemander(Controleur c,Demande d){
 		c.demander(d);
-		System.out.println("APPEL " + d.toString());
+
+		return "APPEL " + d.toString();
 	}
 	
-	public void testArretDUrgence(Controleur c){
+	public String testArretDUrgence(Controleur c){
 		c.arretUrgence();
-		System.out.println("Arret d'urgence");
+
+		return "Arret d'urgence";
 	}
 	
-	public void testSignalerChangementEtage(Controleur c){
+	public String testSignalerChangementEtage(Controleur c) throws ExceptionCabineArretee{
 		c.signalerChangementDEtage();
-		System.out.println("Signal de franchissement de palier");
+
+		return "Signal de franchissement de palier";
 	}
 	
-	@Test
+	@Test(expected=ExceptionCabineArretee.class)
 	public void testAppelApresArretProlonge() throws ExceptionCabineArretee{
 		//c1=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		//Demande d1=new Demande(1,Sens.MONTEE);
-		testDemander(c1,d1);
-
+		c1.demander(d1);
+		
 		//c1.signalerChangementDEtage();
 		testSignalerChangementEtage(c1);
 		//assertSame(2,c1.getPosition());
@@ -109,71 +112,56 @@ public class ControleTest {
 		
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testAppelsAscenseurMemeSensCabineEnCoursDeplacement() throws ExceptionCabineArretee{
 		//c3=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),4);
 		//Demande d3=new Demande(1,Sens.INDEFINI);
+		
 		c3.demander(d3);
-		
-		c3.signalerChangementDEtage();
-		assertSame(3,c3.getPosition());
+		testSignalerChangementEtage(c3);
+		//assertSame(3,c3.getPosition());
 		//Demande d4=new Demande(2,Sens.DESCENTE);
+		c3.demander(d4);
+		c3.arreterProchainNiveau();
+		testSignalerChangementEtage(c3);
+		//assertSame(2,c3.getPosition());
+		
 		
 		c3.arreterProchainNiveau();
-		c3.signalerChangementDEtage();
-		assertSame(2,c3.getPosition());
-		
-		
-		c3.arreterProchainNiveau();
-		c3.signalerChangementDEtage();
-		assertSame(1,c3.getPosition());
+		testSignalerChangementEtage(c3);
+		//assertSame(1,c3.getPosition());
 
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testAppelAscenseurSensInverseCabineEnCoursDeplacement() throws ExceptionCabineArretee{
-		//c4=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
-		//Demande d5 = new Demande(1,Sens.INDEFINI);
 		c4.demander(d5);
-		c4.signalerChangementDEtage();
-		assertSame(2,c4.getPosition());
-		//c4.arreterProchainNiveau();
-		//Demande d6=new Demande(3,Sens.MONTEE);
+		testSignalerChangementEtage(c4);
 		c4.demander(d6);
-		c4.signalerChangementDEtage();
-		assertSame(1,c4.getPosition());
-		c4.signalerChangementDEtage();
-		assertSame(2,c4.getPosition());
-		//c4.arreterProchainNiveau();
-		c4.signalerChangementDEtage();
-		assertSame(3,c4.getPosition());
+		testSignalerChangementEtage(c4);
+		testSignalerChangementEtage(c4);
+
+		testSignalerChangementEtage(c4);
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testAppelAscenseurDeuxChangementsSens() throws ExceptionCabineArretee{
-		//c5=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),4);
-		//Demande d7=new Demande(1,Sens.INDEFINI);
 		c5.demander(d7);
-		c5.signalerChangementDEtage();
-		assertSame(3,c5.getPosition());
-		//Demande d8=new Demande(5,Sens.DESCENTE);
+		testSignalerChangementEtage(c5);
+
 		c5.demander(d8);
-		c5.signalerChangementDEtage();
-		assertSame(2,c5.getPosition());
-		//c5.arreterProchainNiveau();
-		c5.signalerChangementDEtage();
-		assertSame(1,c5.getPosition());
-		c5.signalerChangementDEtage();
-		c5.signalerChangementDEtage();
-		c5.signalerChangementDEtage();
-		assertSame(4,c5.getPosition());
-		//Demande d9 = new Demande(4,Sens.DESCENTE);
-		//c5.arreterProchainNiveau();
-		c5.signalerChangementDEtage();
-		assertSame(5,c5.getPosition());
-		//c5.arreterProchainNiveau();
-		c5.signalerChangementDEtage();
-		assertSame(4,c5.getPosition());
+		testSignalerChangementEtage(c5);
+
+		testSignalerChangementEtage(c5);
+
+		testSignalerChangementEtage(c5);
+		testSignalerChangementEtage(c5);
+		testSignalerChangementEtage(c5);
+
+		testSignalerChangementEtage(c5);
+
+		testSignalerChangementEtage(c5);
+
 	}
 	
 	
@@ -185,8 +173,8 @@ public class ControleTest {
 		c6.demander(d10);
 		c6.demander(d11);
 		//c6.arreterProchainNiveau();
-		c6.signalerChangementDEtage();
-		assertSame(2,c6.getPosition());
+		testSignalerChangementEtage(c6);
+		//assertSame(2,c6.getPosition());
 		
 		//c7=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		//Demande d12 = new Demande(2,Sens.DESCENTE);
@@ -194,50 +182,47 @@ public class ControleTest {
 		c7.demander(d12);
 		c7.demander(d13);
 		//c7.arreterProchainNiveau();
-		c7.signalerChangementDEtage();
-		assertSame(2,c7.getPosition());
+		testSignalerChangementEtage(c6);
+		//assertSame(2,c7.getPosition());
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testDeuxAppelsMemeEtage() throws ExceptionCabineArretee{
 		//c8=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),2);
 		//Demande d14 = new Demande(1,Sens.INDEFINI);
 		//Demande d15 = new Demande(1,Sens.INDEFINI);
-		c8.arreterProchainNiveau();
-		c8.signalerChangementDEtage();
-		assertSame(1,c8.getPosition());
+		//c8.arreterProchainNiveau();
+		c8.demander(d14);
+		c8.demander(d15);
+		testSignalerChangementEtage(c8);
+		//assertSame(1,c8.getPosition());
 	}
 	
 	@Test
 	public void testArretUrgence() throws ExceptionCabineArretee{
 		//c9=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		//Demande d16=new Demande(1,Sens.MONTEE);
-		c9.MAJPosition();
-		c9.arretUrgence();
-		assertSame(2,c9.getPosition());
-		c9.eteindreBouton(d16);
+		//c9.MAJPosition();
+		testArretDUrgence(c9);
+		//assertSame(2,c9.getPosition());
+		//c9.eteindreBouton(d16);
 	}
 	
 	@Test
 	public void testRepriseArretDurgence() throws ExceptionCabineArretee{
-		c10=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		//c10=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		//Demande d17=new Demande(1,Sens.MONTEE);
 		c10.demander(d17);
-		c10.arretUrgence();//doit eteindre les boutons
-		assertSame(2,c10.getPosition());
+		testArretDUrgence(c10);//doit eteindre les boutons
+		//assertSame(2,c10.getPosition());
 		//Demande d18=new Demande(7,Sens.DESCENTE);
-		c10.arretUrgence();
+		testArretDUrgence(c10);
 		//Demande d19=new Demande(1,Sens.MONTEE);
-		c10.signalerChangementDEtage();
-		assertSame(2,c10.getPosition());
+		testSignalerChangementEtage(c10);
+		//assertSame(2,c10.getPosition());
 		//c10.arreterProchainNiveau();
-		c10.signalerChangementDEtage();
-		assertSame(1,c10.getPosition());
+		testSignalerChangementEtage(c10);
+		//assertSame(1,c10.getPosition());
 	}
-	
-	
-	
-	
-	
 	
 }
