@@ -66,3 +66,4 @@ $RECYCLE.BIN/
 *.zip
 .metadata/.mylyn/.tasks.xml.zip
 .classpath
+*.classpath

@@ -1,8 +1,9 @@
 package commande;
 
+import operative.ICabine;
+
 public class DoublureDeCabine implements ICabine {
 
-	@Override
 	public void signalerChangementDEtage() {
 		System.out.println("Signal de franchissement d'étage");
 		
@@ -28,7 +29,14 @@ public class DoublureDeCabine implements ICabine {
 	@Override
 	public void arreter() {
 		System.out.println("arreter");
+<<<<<<< HEAD
+=======
 		
 	}
-
+	
+	@Override
+	public void assignerControleur(IControleur ic){
+>>>>>>> refs/remotes/origin/master
+		
+	}
 }

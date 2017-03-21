@@ -1,16 +1,15 @@
 package commande;
 
+import operative.IIUG;
 import outils.Demande;
 
 public class DoublureDeIUG implements IIUG{
 
-	@Override
 	public void demander(Demande d) {
 		System.out.println("APPEL " + d.toString());
 		
 	}
 
-	@Override
 	public void arretUrgence() {
 		System.out.println("Arret d'urgence");		
 	}
@@ -38,4 +37,8 @@ System.out.println("allumer bouton "+ d.toString());
 		
 	}
 
+	@Override
+	public void assignerControleur(IControleur ic){
+		
+	}
 }
