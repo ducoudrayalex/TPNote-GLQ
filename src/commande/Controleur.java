@@ -1,4 +1,8 @@
 package commande;
+import operative.Cabine;
+import operative.ICabine;
+import operative.IIUG;
+import operative.IUG;
 import outils.*;
 
 /**
@@ -8,7 +12,7 @@ import outils.*;
  * @see Sens
  * @see ListeTrieeCirculaireDeDemandes
  */
-public class Controleur implements IControleur, IIUG, ICabine{
+public class Controleur implements IControleur, ICabine, IIUG{
 	private int position;
 	private int nombreEtages;
 	private Sens sens;
@@ -16,7 +20,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
 	private IIUG diug;
-	private ICabine dc;
+	private ICabine cabine;
 	
 	/**
 	 * Constructeur par défaut de la classe.
@@ -38,43 +42,37 @@ public class Controleur implements IControleur, IIUG, ICabine{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Met à jour la position de la cabine en fonction de son mouvement.
 	 */
-=======
 	public int getPosition(){
 		return position;
 	}
-	public Controleur(IIUG diug,ICabine dc,int position){
+	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire stock){
+		assignerControleur(this);
 		this.diug=diug;
-		this.dc=dc;
-		this.position=position;
+		this.cabine=cabine;
+		nombreEtages = nbEtages;
+		stockDeDemandes = (ListeTrieeCirculaireDeDemandes) stock;
 	}
 	
-	public IIUG doublureIUG(){
-		return diug;
-	}
-	
-	public ICabine doublureCabine(){
-		return dc;
-	}
-	
->>>>>>> refs/remotes/origin/master
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
 		{
 			position++;
+			monter();
 		}
 		else if(sens == Sens.DESCENTE && position>0)
 		{
 			position--;
+			descendre();
 		}
 		else
 		{
 			throw new ExceptionCabineArretee();
 		}
+		diug.changerPosition(position);
 	}
 	
 	/**
@@ -111,7 +109,6 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	/**
 	 * Eteint tous les boutons allumés.
 	 */
-	@Override
 	public void eteindreTousBoutons() {
 		for(int i=0;i<stockDeDemandes.taille();i++) 
 		{
@@ -122,7 +119,6 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	/**
 	 * Supprime toutes les demandes précédemment stockées.
 	 */
-	@Override
 	public void viderStock() {
 		stockDeDemandes.vider();
 	}
@@ -131,7 +127,6 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * Retourne la demande suivante du stock à traiter.
 	 * @return <code>Demande</code> la demande suivante à traiter
 	 */
-	@Override
 	public Demande interrogerStock() {
 		return stockDeDemandes.suivantDe(new Demande(position,sens));
 	}
@@ -140,7 +135,6 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 * Supprime la demande souhaitée du stock.
 	 * @param d <code>Demande</code> : Demande que l'on souhaite ne plus traiter (car traitée au préalable).
 	 */
-	@Override
 	public void enleverDuStock(Demande d) {
 		stockDeDemandes.supprimer(d);
 	}
@@ -151,8 +145,9 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void demander(Demande d) {
-		// TODO Auto-generated method stub
-		
+		diug.allumerBouton(d);
+		MAJSens();
+		stocker(d);
 	}
 
 	/**
@@ -160,8 +155,8 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void arretUrgence() {
-		// TODO Auto-generated method stub
-		
+		cabine.arreter();
+		eteindreTousBoutons();
 	}
 
 	/**
@@ -170,8 +165,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void allumerBouton(Demande d) {
-		// TODO Auto-generated method stub
-		
+		diug.allumerBouton(d);
 	}
 
 	/**
@@ -180,8 +174,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void eteindreBouton(Demande d) {
-		// TODO Auto-generated method stub
-		
+		diug.eteindreBouton(d);
 	}
 
 	/**
@@ -190,8 +183,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void ajouterMessage(String message) {
-		// TODO Auto-generated method stub
-		
+		diug.ajouterMessage(message);
 	}
 
 	/**
@@ -200,26 +192,24 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void changerPosition(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	/**
-	 * Stocke une demande.
-	 */
-	@Override
-	public void stocker() {
-		// TODO Auto-generated method stub
-		
+		diug.changerPosition(i);
 	}
 
 	/**
 	 * Signale un changement d'étage. 
 	 */
 	@Override
-	public void signalerChangementDEtage() {
-		// TODO Auto-generated method stub
-		
+	public synchronized void signalerChangementDEtage() {
+		try {
+			MAJPosition();
+		} catch (ExceptionCabineArretee e) {
+			e.printStackTrace();
+		}
+		if((sens == Sens.MONTEE && position+1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage())
+				|| (sens == Sens.DESCENTE && position-1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage()) )
+		{
+			cabine.arreterProchainNiveau();
+		}
 	}
 
 	/**
@@ -227,8 +217,7 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void monter() {
-		// TODO Auto-generated method stub
-		
+		cabine.monter();
 	}
 
 	/**
@@ -236,17 +225,15 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void descendre() {
-		// TODO Auto-generated method stub
-		
+		cabine.descendre();
 	}
 
 	/**
 	 * Signale que la cabine s'arrête au prochain étage (due à une demande)
 	 */
 	@Override
-	public void areterProchainNiveau() {
-		// TODO Auto-generated method stub
-		
+	public void arreterProchainNiveau() {
+		cabine.arreterProchainNiveau();
 	}
 
 	/**
@@ -254,8 +241,17 @@ public class Controleur implements IControleur, IIUG, ICabine{
 	 */
 	@Override
 	public void arreter() {
-		// TODO Auto-generated method stub
-		
+		cabine.arreter();
 	}
 	
+	@Override
+	public void assignerControleur(IControleur ic){
+		cabine.assignerControleur(ic);
+		diug.assignerControleur(ic);
+	}
+	
+	@Override
+	public void exit(){
+		
+	}
 }

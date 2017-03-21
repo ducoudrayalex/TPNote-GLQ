@@ -1,30 +1,27 @@
 package commande;
 
+import operative.IIUG;
 import outils.Demande;
 
 public class DoublureDeIUG implements IIUG{
 
-	@Override
 	public void demander(Demande d) {
-		// TODO Auto-generated method stub
+		System.out.println("APPEL " + d.toString());
 		
 	}
 
-	@Override
 	public void arretUrgence() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Arret d'urgence");		
 	}
 
 	@Override
 	public void allumerBouton(Demande d) {
-		// TODO Auto-generated method stub
-		
+System.out.println("allumer bouton "+ d.toString());		
 	}
 
 	@Override
 	public void eteindreBouton(Demande d) {
-		// TODO Auto-generated method stub
+		System.out.println("Eteindre bouton "+ d.toString());
 		
 	}
 
@@ -40,4 +37,8 @@ public class DoublureDeIUG implements IIUG{
 		
 	}
 
+	@Override
+	public void assignerControleur(IControleur ic){
+		
+	}
 }
