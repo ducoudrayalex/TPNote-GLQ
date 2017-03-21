@@ -47,7 +47,7 @@ public class ControleTest {
 		d18=new Demande(7,Sens.DESCENTE);
 		d19=new Demande(1,Sens.MONTEE);
 		
-		c1=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		/*c1=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		c2=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),1);
 		c3=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),4);
 		c4=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
@@ -56,7 +56,7 @@ public class ControleTest {
 		c7=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
 		c8=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),2);
 		c9=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c10=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c10=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);*/
 	}
 
 	@After

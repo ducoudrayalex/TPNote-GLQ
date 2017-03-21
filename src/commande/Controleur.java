@@ -42,40 +42,21 @@ public class Controleur implements IControleur, ICabine, IIUG{
 		this.stockDeDemandes = stockDeDemandes;
 	}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master
 	/**
 	 * Met à jour la position de la cabine en fonction de son mouvement.
 	 */
 	public int getPosition(){
 		return position;
 	}
-	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire stock){
-		assignerControleur(this);
-		this.diug=diug;
-<<<<<<< HEAD
-		this.dc=dc;
-		this.position=position;
-		this.stockDeDemandes=new ListeTrieeCirculaireDeDemandes(10);
-	}
-	
-	public IIUG doublureIUG(){
-		return diug;
-	}
-	
-	public ICabine doublureCabine(){
-		return dc;
-	}
-	
-=======
-		this.cabine=cabine;
+	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire<Demande> stock){
+		//assignerControleur(this);
+		this.diug=(IUG)diug;
+		this.cabine=(Cabine)cabine;
 		nombreEtages = nbEtages;
 		stockDeDemandes = (ListeTrieeCirculaireDeDemandes) stock;
 	}
 	
->>>>>>> refs/remotes/origin/master
+
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
 		if(sens == Sens.MONTEE && position<nombreEtages-1)
@@ -165,21 +146,9 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void demander(Demande d) {
-<<<<<<< HEAD
-		this.stocker(d);
-		this.diug.demander(d);
-		MAJSens();
-		if(this.getPosition() < d.etage()){
-			this.dc.monter();
-		}else
-			this.dc.descendre();
-		
-		this.diug.allumerBouton(d);
-=======
 		diug.allumerBouton(d);
 		MAJSens();
 		stocker(d);
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -187,14 +156,8 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void arretUrgence() {
-<<<<<<< HEAD
-		this.eteindreTousBoutons();
-		this.diug.arretUrgence();
-		
-=======
 		cabine.arreter();
 		eteindreTousBoutons();
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -203,12 +166,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void allumerBouton(Demande d) {
-<<<<<<< HEAD
-		this.diug.allumerBouton(d);
-		
-=======
 		diug.allumerBouton(d);
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -217,12 +175,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void eteindreBouton(Demande d) {
-<<<<<<< HEAD
-		this.diug.eteindreBouton(d);
-		
-=======
 		diug.eteindreBouton(d);
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -248,13 +201,6 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 * @throws ExceptionCabineArretee 
 	 */
 	@Override
-<<<<<<< HEAD
-	public void signalerChangementDEtage() throws ExceptionCabineArretee {
-		
-		this.dc.signalerChangementDEtage();
-		this.MAJPosition();
-		System.out.println("Etage : " + this.getPosition());
-=======
 	public synchronized void signalerChangementDEtage() {
 		try {
 			MAJPosition();
@@ -266,7 +212,6 @@ public class Controleur implements IControleur, ICabine, IIUG{
 		{
 			cabine.arreterProchainNiveau();
 		}
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -274,12 +219,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void monter() {
-<<<<<<< HEAD
-		this.dc.monter();
-		
-=======
 		cabine.monter();
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -287,12 +227,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void descendre() {
-<<<<<<< HEAD
-		this.dc.descendre();
-		
-=======
 		cabine.descendre();
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -300,12 +235,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void arreterProchainNiveau() {
-<<<<<<< HEAD
-		this.dc.arreterProchainNiveau();
-		
-=======
 		cabine.arreterProchainNiveau();
->>>>>>> refs/remotes/origin/master
 	}
 
 	/**
@@ -313,10 +243,6 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void arreter() {
-<<<<<<< HEAD
-		this.dc.arreter();
-		
-=======
 		cabine.arreter();
 	}
 	
@@ -324,7 +250,6 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	public void assignerControleur(IControleur ic){
 		cabine.assignerControleur(ic);
 		diug.assignerControleur(ic);
->>>>>>> refs/remotes/origin/master
 	}
 	
 	@Override

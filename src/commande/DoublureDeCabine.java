@@ -28,15 +28,11 @@ public class DoublureDeCabine implements ICabine {
 
 	@Override
 	public void arreter() {
-		System.out.println("arreter");
-<<<<<<< HEAD
-=======
-		
+		System.out.println("arreter");	
 	}
 	
 	@Override
-	public void assignerControleur(IControleur ic){
->>>>>>> refs/remotes/origin/master
+	public void assignerControleur(IControleur ic){	
 		
 	}
 }
