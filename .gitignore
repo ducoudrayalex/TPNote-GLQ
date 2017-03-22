@@ -65,3 +65,7 @@ $RECYCLE.BIN/
 /.apt_generated/
 *.zip
 .metadata/.mylyn/.tasks.xml.zip
+.classpath
+*.classpath
+*.classpath
+.project
