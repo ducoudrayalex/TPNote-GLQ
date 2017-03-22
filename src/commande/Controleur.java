@@ -19,8 +19,8 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	private Sens sensPrecedent;
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
-	private IIUG diug;
-	private ICabine cabine;
+	private IUG diug;
+	private Cabine cabine;
 	
 	/**
 	 * Constructeur par défaut de la classe.
@@ -50,7 +50,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	}
 	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire<Demande> stock){
 		//assignerControleur(this);
-		this.diug=(IUG)diug;
+		this.diug=(IUG) diug;
 		this.cabine=(Cabine)cabine;
 		nombreEtages = nbEtages;
 		stockDeDemandes = (ListeTrieeCirculaireDeDemandes) stock;
@@ -146,7 +146,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	 */
 	@Override
 	public void demander(Demande d) {
-		diug.allumerBouton(d);
+		allumerBouton(d);
 		MAJSens();
 		stocker(d);
 	}
@@ -210,7 +210,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 		if((sens == Sens.MONTEE && position+1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage())
 				|| (sens == Sens.DESCENTE && position-1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage()) )
 		{
-			cabine.arreterProchainNiveau();
+			arreterProchainNiveau();
 		}
 	}
 

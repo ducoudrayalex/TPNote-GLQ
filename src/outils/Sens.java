@@ -26,6 +26,7 @@ public enum Sens
 	/**
 	 * Retourne le caractère du sens	   
 	 */
+	@Override
 	public String toString()
 	{
 	    return logo;
