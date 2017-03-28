@@ -19,12 +19,12 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	private Sens sensPrecedent;
 	private Demande demande;
 	private ListeTrieeCirculaireDeDemandes stockDeDemandes;
-	private IIUG diug;
-	private ICabine cabine;
+	private IUG diug;
+	private Cabine cabine;
 	
 	/**
 	 * Constructeur par défaut de la classe.
-	 * @param position <code>int</code> : postition à laquelle se trouve la cabine
+	 * @param position <code>int</code> : position à laquelle se trouve la cabine
 	 * @param nombreEtages <code>int</code> : Nombre total d'étages de l'immeuble
 	 * @param sens <code>Sens</code> : Sens dans lequel la cabine est en mouvement 
 	 * @param sensPrecedent <code>Sens</code> : Sens précédent que la cabine suivait
@@ -49,13 +49,17 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	public int getPosition(){
 		return position;
 	}
-	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire stock){
-		assignerControleur(this);
-		this.diug=diug;
-		this.cabine=cabine;
+	public Controleur(int nbEtages, IIUG diug, ICabine cabine, IListeTrieeCirculaire<Demande> stock){
+		//assignerControleur(this);
+		this.diug=(IUG) diug;
+		this.cabine=(Cabine)cabine;
 		nombreEtages = nbEtages;
 		stockDeDemandes = (ListeTrieeCirculaireDeDemandes) stock;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refs/remotes/origin/master
 
 	public void MAJPosition() throws ExceptionCabineArretee
 	{
@@ -147,7 +151,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 	@Override
 
 	public void demander(Demande d) {
-		diug.allumerBouton(d);
+		allumerBouton(d);
 		MAJSens();
 		stocker(d);
 	}
@@ -201,6 +205,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 
 	/**
 	 * Signale un changement d'étage. 
+	 * @throws ExceptionCabineArretee 
 	 */
 	@Override
 	public synchronized void signalerChangementDEtage() {
@@ -212,7 +217,7 @@ public class Controleur implements IControleur, ICabine, IIUG{
 		if((sens == Sens.MONTEE && position+1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage())
 				|| (sens == Sens.DESCENTE && position-1 == stockDeDemandes.suivantDe(new Demande(position,sens)).etage()) )
 		{
-			cabine.arreterProchainNiveau();
+			arreterProchainNiveau();
 		}
 	}
 

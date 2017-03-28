@@ -214,6 +214,7 @@ public class ListeTrieeCirculaireDeDemandes implements IListeTrieeCirculaire<Dem
 	 * Renvoie une chaîne de caractère représentant le contenu de la liste des demandes
 	 * @return <code>String</code>
 	 */
+	@Override
 	public String toString()
 	{
 		String phraseFinale = "";

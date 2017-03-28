@@ -10,8 +10,14 @@ public interface ICabine {
 
 	/**
 	 * Signale un changement d'étage. 
+<<<<<<< HEAD
 	 */
 	void signalerChangementDEtage();
+=======
+	 * @throws ExceptionCabineArretee 
+	 */
+	void signalerChangementDEtage() throws ExceptionCabineArretee;
+>>>>>>> refs/remotes/origin/master
 	
 	/**
 	 * Déclenche l'action de monter pour la cabine.
@@ -26,7 +32,11 @@ public interface ICabine {
 	/**
 	 * Signale que la cabine s'arrête au prochain étage (due à une demande)
 	 */
+<<<<<<< HEAD
 	void areterProchainNiveau();
+=======
+	void arreterProchainNiveau();
+>>>>>>> refs/remotes/origin/master
 	
 	/**
 	 * Fait arrêter la cabine en mouvement.
