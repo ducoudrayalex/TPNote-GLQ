@@ -27,7 +27,6 @@ public class ControleTest {
 	
 	@Before
 	public void setUp()  {
-		int nombreEtages = 7;
 		d1=new Demande(1,Sens.MONTEE);
 		d2=new Demande(3,Sens.MONTEE);
 		d3=new Demande(1,Sens.INDEFINI);
@@ -48,16 +47,16 @@ public class ControleTest {
 		d18=new Demande(7,Sens.DESCENTE);
 		d19=new Demande(1,Sens.MONTEE);
 		
-		c1=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c2=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),1);
-		c3=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),4);
-		c4=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c5=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),4);
-		c6=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c7=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c8=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),2);
-		c9=new Controleur(nombreEtages, new DoublureDeIUG(),new DoublureDeCabine(),3);
-		c10=new Controleur(nombreEtages,new DoublureDeIUG(),new DoublureDeCabine(),3);
+		/*c1=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c2=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),1);
+		c3=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),4);
+		c4=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c5=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),4);
+		c6=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c7=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c8=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),2);
+		c9=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);
+		c10=new Controleur(new DoublureDeIUG(),new DoublureDeCabine(),3);*/
 	}
 
 	@After
